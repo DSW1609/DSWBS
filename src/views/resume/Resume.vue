@@ -29,45 +29,19 @@
         <img src="~assets/img/index/tt_ac.png" alt />
         <span>专业技能</span>
       </div>
-      <div class="rr_line">
-        <!-- one -->
-        <transition enter-active-class="animated bounceInDown">
-          <div class="r_one" v-show="isSone">
-            <!-- 左侧logo -->
-            <div class="r_one_lg lg_ht">
-              <img src="~assets/img/resume/Html5.svg" alt />
-              <h3>HTML5</h3>
-            </div>
-            <div class="r_one_lg lg_css">
-              <img src="~assets/img/resume/css3.svg" alt />
-              <h3>CSS3</h3>
-            </div>
-            <div class="r_one_lg lg_js">
-              <img src="~assets/img/resume/js.svg" alt />
-              <h3>JavaCript</h3>
-            </div>
-          </div>
-        </transition>
-        <!-- one -->
-        <transition enter-active-class="animated bounceInDown">
-          <div class="r_one" v-show="isSone">
-            <!-- 左侧logo -->
-            <div class="r_one_lg lg_vue">
-              <img src="~assets/img/resume/Vue.svg" alt />
-              <h3>Vue</h3>
-            </div>
-            <div class="r_one_lg lg_ps">
-              <img src="~assets/img/resume/PS.svg" alt />
-              <h3>PS</h3>
-            </div>
-          </div>
-        </transition>
-      </div>
+      <!-- one -->
+      <transition enter-active-class="animated bounceInDown">
+        <div class="rr_line" v-show="isSone">
+          <Ss :ss="ss1" />
+          <Ss :ss="ss2" />
+        </div>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
+import Ss from "components/ss/Ss";
 export default {
   data() {
     return {
@@ -104,8 +78,66 @@ export default {
           邮箱: "DSW7296666@163.com"
         }
       ],
-      isSone: false
+      isSone: false,
+      // 技能
+      ss1: [
+        {
+          class: "lg_ht",
+          src: require("../../assets/img/resume/Html5.svg"),
+          tit: `熟练掌握使用HTML,了解HTML5的新特性。<br />
+          熟悉掌握并能正确的使用HTML5语义化标签,例如footer,nav,aside等,
+          与搜索引擎建立良好沟通,提升代码可读性,灵活配合使用,优化用户体验。<br />
+          快速配合CSS完成较为复杂的网页布局。
+            `,
+          star: 4
+        },
+        {
+          class: "lg_css",
+          src: require("../../assets/img/resume/css3.svg"),
+          tit: `熟练掌握使用CSS,基础扎实,理解深刻,经验充足,能够配合HTML快速完成美观复杂的网页布局。<br />
+          熟练高效的使用CSS3的选择器,清楚各种选择器的效果。<br />
+          熟练正确使用transition,animation,transform等CSS3的新特性。
+          `,
+          star: 4
+        },
+        {
+          class: "lg_js",
+          src: require("../../assets/img/resume/js.svg"),
+          tit: `熟练掌握使用JavaScript,基础扎实,代码规范,习惯良好,能够配合CSS灵活运用,完成想要达到的效果。<br />
+          熟悉ES6新特性,例如声明变量(let,const)、箭头函数=>、数组和对象的解构,遍历(for...in,for...of)以及数组的高级方法(find,filter,reduce)。`,
+          star: 4
+        }
+      ],
+      ss2: [
+        {
+          class: "lg_vue",
+          src: require("../../assets/img/resume/Vue.svg"),
+          tit: `① 熟练使用Vue,Devtools,及用Vue Cli3快速搭建项目。<br />
+          ② 熟悉Vue的模板语法,基础扎实,清楚Vue条件渲染(if show)的不同,熟练使用Vue的列表渲染。<br />
+          ③ 熟练正确的使用Vue组件,掌握全局注册和以及在模块系统中局部注册的方式。了解组件中的插槽及ref注册引用信息。掌握组件传值三种方式: 父传子(props),
+          子传父($emit),非父子(事件总线,VueX)。<br />
+          ④ 掌握Vue中的监听事件,掌握v-model指令,创建双向数据绑定。了解并正确的使用事件修饰符和按键修饰符。<br />
+          ⑤ 熟练使用应用过渡效果,配合使用第三方 CSS 动画库,如 Animate.css,制作优雅流畅的过渡效果,提升用户体验。<br />
+          ⑥ 熟练使用Vue-Router,并正确使用路由懒加载配合keep-alive保持当前路由不被销毁,提升页面性能。<br />
+          ⑦ 熟练使用Vuex,在多个组件共享状态时,例如在添加购物车中,使多页面数据达成一致。`,
+          star: 4
+        },
+        {
+          class: "lg_ps",
+          src: require("../../assets/img/resume/PS.svg"),
+          tit: `基本掌握PS大部分工具的使用方法。<br />
+          例如钢笔工具,魔棒工具,仿制图章工具。<br />
+          可以简单的对图片进行调成,裁剪,修复,抠图。<br />
+          掌握PS一些常用快捷键,提高作图效率。<br />
+          了解图层的层级关系,了解通道蒙版,了解路径等。<br />
+          `,
+          star: 3
+        }
+      ]
     };
+  },
+  components: {
+    Ss
   },
   activated() {
     setTimeout(() => {
@@ -118,7 +150,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .resume {
   position: relative;
   width: 100%;
@@ -151,6 +183,17 @@ export default {
   font-size: 40px;
   letter-spacing: 5px;
   color: #fff;
+}
+.star {
+  position: relative;
+  float: left;
+  margin: 3px;
+  margin-top: 10px;
+  width: 30px;
+}
+.star_a {
+  width: 28px;
+  top: 1px;
 }
 .na_m {
   position: relative;
@@ -208,7 +251,6 @@ export default {
 .rr_line {
   position: relative;
   width: 54vw;
-  height: 70vh;
   margin: 0 auto;
   top: -2vh;
   margin-top: 2.2vh;
@@ -236,6 +278,8 @@ export default {
 .r_one_lg h3 {
   position: relative;
   top: 5px;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 .lg_ht {
   background: #e54d26;
@@ -249,9 +293,10 @@ export default {
 }
 .lg_vue {
   height: 46vh;
-  background: #41b883;
+  background: #4fc08d;
 }
 .lg_ps {
+  color: rgb(26, 26, 26);
   background: #4286f4;
 }
 </style>

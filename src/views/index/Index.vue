@@ -9,11 +9,22 @@
     <div class="index_jbg">
       <!-- 左半圆 -->
       <div class="index_lby">
-        <img src="~assets/img/index/index_bg.jpg" alt />
+        <img src="~assets/img/index/index_bg.jpg" @click="imgClick" alt />
       </div>
       <!-- 遮挡层 -->
       <div class="index_zd"></div>
     </div>
+    <!-- 隐藏大图 -->
+    <transition
+      enter-active-class="animated bounceInDown"
+      leave-active-class="animated bounceOutDown"
+    >
+      <div v-show="isShow" class="no">
+        <img class="no_b" src="~assets/img/index/index_bg.jpg" alt />
+        <!-- 关闭按钮 -->
+        <img class="no_m" src="~assets/img/index/no.svg" @click="no_mc" alt />
+      </div>
+    </transition>
     <!-- 右侧文字 -->
     <div class="index_te">
       <span>
@@ -44,8 +55,24 @@
 <script>
 import Tutu from "components/tutu/Tutu";
 export default {
+  data() {
+    return {
+      isShow: false
+    };
+  },
   components: {
     Tutu
+  },
+  methods: {
+    imgClick() {
+      this.isShow = true;
+    },
+    no_mc() {
+      this.isShow = false;
+    }
+  },
+  deactivated() {
+    this.isShow = false;
   }
 };
 </script>
@@ -83,6 +110,7 @@ export default {
   border-radius: 350px 0 0 300px;
   border: 2px solid #18181a;
   box-shadow: 0px 0px 20px #000;
+  cursor: pointer;
   background-image: linear-gradient(#944757, #956094);
 }
 .index_lby img {
@@ -155,5 +183,41 @@ export default {
 .rsj_2 {
   width: 30px;
   opacity: 0.7;
+}
+.no {
+  position: absolute;
+  width: 36vw;
+  padding-top: 36vw;
+  background: black;
+  overflow: hidden;
+  border-radius: 18vw;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
+  top: 12vh;
+  box-shadow: 0px 0px 100vw 100vw #18181a;
+}
+.no_b {
+  position: absolute;
+  width: 36vw;
+  top: -3.9vw;
+}
+.no_m {
+  position: absolute;
+  width: 2.2vw;
+  top: 36vh;
+  bottom: 0;
+  right: 5px;
+  cursor: pointer;
+  animation: noxxx 1.5s linear infinite;
+}
+@keyframes noxxx {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

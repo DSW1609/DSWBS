@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <transition enter-active-class="animated lightSpeedIn">
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </transition>
+    <!-- 导航栏 -->
+    <NavBar />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import NavBar from "components/navbar/NavBar";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    NavBar
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import "assets/css/base.css";
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  background: #18181a;
 }
 </style>

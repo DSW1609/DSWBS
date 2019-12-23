@@ -1,5 +1,5 @@
 <template>
-  <ul class="navbar">
+  <ul class="navbar" :class="{navbar_2: cIndex==2}">
     <li
       v-for="(t,index) in navbar.length"
       :key="index"
@@ -64,17 +64,20 @@ export default {
   position: fixed;
   width: 50px;
   height: 200px;
-  right: 2vw;
+  right: 1.5vw;
   z-index: 999;
   top: -50px;
   bottom: 0;
   margin: auto;
+  transition: 0.3s;
+}
+.navbar_2 {
+  right: 0.5vw !important;
 }
 li {
   position: relative;
   list-style: none;
   width: 50px;
-  height: 50px;
   text-align: center;
   margin-top: 5px;
 }
@@ -96,5 +99,6 @@ li img {
   border-radius: 5px;
   font-weight: bold;
   letter-spacing: 1px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 </style>

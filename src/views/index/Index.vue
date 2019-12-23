@@ -125,7 +125,7 @@ export default {
   position: absolute;
   width: 100px;
   height: 100vh;
-  background-image: linear-gradient(to right, #18181a, #101012);
+  background: #18181a;
   transform: rotate(11deg);
   left: 25vw;
 }
@@ -133,9 +133,9 @@ export default {
   position: absolute;
   width: 200px;
   height: 120vh;
-  background: #18181a;
   right: -200px;
   top: -20vh;
+  background: #18181a;
   box-shadow: -5px -5px 10px #101012;
 }
 .index_te {

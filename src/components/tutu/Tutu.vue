@@ -1,6 +1,6 @@
 <template>
   <div class="tutu">
-    <img src="~assets/img/index/tutu.png" @click="popClick" alt />
+    <img ref="tutu" src="~assets/img/index/tutu.png" @click="popClick" alt />
     <!-- 弹出框 -->
     <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
       <div class="tutu_pop" v-show="isX">{{pop[popi]}}</div>

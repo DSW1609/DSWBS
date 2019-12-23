@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition enter-active-class="animated lightSpeedIn">
+    <transition enter-active-class="animated zoomIn">
       <keep-alive>
         <router-view />
       </keep-alive>

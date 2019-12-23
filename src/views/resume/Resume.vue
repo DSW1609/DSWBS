@@ -12,16 +12,14 @@
       </div>
     </div>
     <!-- 左下角内容 -->
-    <transition enter-active-class="animated bounceInDown">
-      <div class="re_l" v-show="isSone">
-        <!-- line -->
-        <div class="re_line" v-for="(item,index) in me" :key="index">
-          <div v-for="(me,value) in item" :key="value">
-            <p>{{value}}: {{me}}</p>
-          </div>
+    <div class="re_l">
+      <!-- line -->
+      <div class="re_line" v-for="(item,index) in me" :key="index">
+        <div v-for="(me,value) in item" :key="value">
+          <p>{{value}}: {{me}}</p>
         </div>
       </div>
-    </transition>
+    </div>
     <!-- 右 -->
     <div class="re_r">
       <!-- line -->

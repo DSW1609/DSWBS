@@ -27,7 +27,7 @@ export default {
   props: {
     ss: {
       type: Array,
-      default: {}
+      default: []
     }
   }
 };

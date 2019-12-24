@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition enter-active-class="animated zoomIn">
+    <transition mode="out-in" enter-active-class="animated slideInDown">
       <keep-alive>
         <router-view />
       </keep-alive>
@@ -26,6 +26,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 body {
-  background: #18181a;
+  background-image: linear-gradient(#bdc3c7, #2c3e50);
 }
 </style>

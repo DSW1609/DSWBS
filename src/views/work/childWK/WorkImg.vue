@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div class="d_img" :class="popClass" v-for="(i,index) in csl" :key="index" @click="workImgCK">
-      <img :src="i.src" alt />
+    <div class="d_img" :class="popClass" v-for="(i,index) in csl" :key="index">
+      <DSWNNN />
+      <transition enter-active-class="animated slideInLeft">
+        <img v-show="isS" :src="i.src" alt />
+      </transition>
       <!-- 隐藏文字区域 -->
       <div class="te_n">
         <!-- 背景 -->
@@ -9,6 +12,8 @@
         <!-- 内容 -->
         <div class="te_te">
           <span v-html="i.te"></span>
+          <br />
+          <a v-show="i.link" :href="i.link" target="__blank">GO !</a>
         </div>
       </div>
     </div>
@@ -16,10 +21,11 @@
 </template>
 
 <script>
+import DSWNNN from "components/DSWNNN/DSWNNN";
 export default {
   data() {
     return {
-      cIndex: 0
+      isS: false
     };
   },
   props: {
@@ -32,10 +38,16 @@ export default {
       default: "d_img"
     }
   },
-  methods: {
-    workImgCK(index) {
-      console.log(index);
-    }
+  components: {
+    DSWNNN
+  },
+  activated() {
+    setTimeout(() => {
+      this.isS = true;
+    }, 520);
+  },
+  deactivated() {
+    this.isS = false;
   }
 };
 </script>
@@ -53,7 +65,7 @@ export default {
   transition: 0.3s;
   border: 3px solid #fff;
   border-radius: 0.5vw;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.315);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   background: #f4f4f4;
 }
 .d_img2 {
@@ -66,8 +78,10 @@ export default {
   transform: scale(1.05);
 }
 .d_img img {
+  position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 999;
 }
 .te_n {
   position: absolute;
@@ -90,10 +104,17 @@ export default {
 }
 .te_te {
   position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 999;
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   text-align: center;
-  /* line-height: 25vh; */
+}
+.te_te a {
+  position: relative;
+  top: 10px;
+  text-decoration: underline;
+  color: #fff !important;
 }
 </style>

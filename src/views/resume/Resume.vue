@@ -27,6 +27,7 @@
         <img src="~assets/img/index/tt_ac.png" alt />
         <span>专业技能</span>
       </div>
+      <DSWNNN clr="#2e4052" />
       <!-- one -->
       <transition enter-active-class="animated bounceInDown">
         <div class="rr_line" v-show="isSone">
@@ -40,6 +41,7 @@
 
 <script>
 import Ss from "components/ss/Ss";
+import DSWNNN from "components/DSWNNN/DSWNNN";
 export default {
   data() {
     return {
@@ -135,7 +137,8 @@ export default {
     };
   },
   components: {
-    Ss
+    Ss,
+    DSWNNN
   },
   activated() {
     setTimeout(() => {
@@ -153,7 +156,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: #18181a;
   overflow: hidden;
 }
 .re_name {
@@ -168,7 +170,7 @@ export default {
   width: 143px;
   height: 80px;
   bottom: 0px;
-  background-image: linear-gradient(to right, #4286f4, #18181a);
+  background-image: linear-gradient(to right, #4286f4, #475766);
 }
 .re_na_r {
   position: absolute;
@@ -222,7 +224,7 @@ export default {
   bottom: 0;
   margin: auto;
   background-image: linear-gradient(#bdc3c7, #2c3e50);
-  box-shadow: 0px 0px 10px #000;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   border-radius: 2vw;
   overflow: hidden;
 }

@@ -1,106 +1,91 @@
 <template>
   <div class="profile">
-    <!-- 顶部导航栏 -->
-    <div class="nav">
-      <span
-        v-for="(y,index) in years"
-        :key="index"
-        @click="navClick(index)"
-        :class="{nav_bac:cIndex==index}"
-      >
-        {{y}}
-        <transition enter-active-class="animated bounceInLeft">
-          <em v-show="cIndex==index"></em>
-        </transition>
-      </span>
-    </div>
-    <!-- 下方文字 -->
+    <!-- 主要内容 -->
     <div class="content">
-      <div class="te">
-        <span>{{ctt[cIndex].te}}</span>
-      </div>
+      <!-- 两侧切换按钮 -->
+      <div class="button button_l" v-show="cIndex!=0" @click="cIndex--"></div>
+      <div class="button button_r" v-show="cIndex!=years.length-1" @click="cIndex++"></div>
+      <transition mode="out-in" enter-active-class="animated zoomIn">
+        <PfShow :cont="y2017[cIndex]" />
+      </transition>
     </div>
   </div>
 </template>
 <script>
+import DSWNNN from "components/DSWNNN/DSWNNN";
+import PfShow from "./childPF/PfShow";
 export default {
   data() {
     return {
       years: [2017, 2018, 2019],
       cIndex: 0,
-      ctt: [
+      y2017: [
         {
-          tit:"",
-          te: `201720172017`
+          te: 20177777777
         },
         {
-          te: `201820182018`
+          te: 20188888888
         },
         {
-          te: `201920192019`
+          te: 20199999999
         }
       ]
     };
   },
-  methods: {
-    navClick(index) {
-      this.cIndex = index;
-    }
-  }
+  components: {
+    DSWNNN,
+    PfShow
+  },
+  methods: {}
 };
 </script>
 
-<style scoped>
+<style>
 .profile {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
-.nav {
-  position: relative;
-  width: 70vw;
-  height: 96px;
-  margin: 0 auto;
-  line-height: 100px;
-  font-size: 30px;
-  color: #5c6b77;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(to right, #bdc3c7, #5a6976, #bdc3c7) 1 8 1;
-}
-.nav span {
-  position: relative;
-  display: inline-block;
-  width: 20vw;
-  height: 90px;
-  text-align: center;
-  left: 5vw;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.nav_bac {
-  color: #fff;
-  font-weight: bold;
-}
-em {
-  position: absolute;
-  width: 3vw;
-  height: 3px;
-  background-image: linear-gradient(to right, #fff, #bdc3c7);
-  left: 0;
-  right: 0;
-  bottom: 20px;
-  margin: auto;
-}
 .content {
   position: relative;
   width: 70vw;
-  height: 80vh;
-  margin: 0 auto;
+  height: 82vh;
+  background: #f4f4f4;
+  margin: auto;
+  top: 9vh;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
-.te{
+.content_l {
+  position: absolute;
+  width: 26vw;
+  height: 98%;
+  left: 0.5vw;
+  top: 1%;
+  transition: 1s;
+}
+.content_r {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 43vw;
+  height: 100%;
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+  background: #e3e8e7;
+}
+.button {
   position: relative;
-  font-size: 20px;
-  color: #fff;
+  float: left;
+  width: 30px;
+  height: 30px;
+  background: yellow;
+  z-index: 999;
+  top: 50%;
+  transform: scaleY(-50%);
+}
+.button_r {
+  float: right;
 }
 </style>

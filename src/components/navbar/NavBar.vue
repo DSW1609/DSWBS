@@ -22,7 +22,7 @@
 export default {
   data() {
     return {
-      navbar: ["首页", "简历 ", "作品", "我"],
+      navbar: ["首页", "简历 ", "作品", "项目"],
       // 路由切换
       router: ["/index", "/resume", "/work", "/profile"],
       WidthD: {

@@ -1,13 +1,8 @@
 <template>
-  <div class="profile">
+  <div class="profile" :style="{backgroundImage:yy[pre].bgc}">
     <!-- 主要内容 -->
     <div class="content">
-      <!-- 两侧切换按钮 -->
-      <div class="button button_l" v-show="cIndex!=0" @click="cIndex--"></div>
-      <div class="button button_r" v-show="cIndex!=years.length-1" @click="cIndex++"></div>
-      <transition mode="out-in" enter-active-class="animated zoomIn">
-        <PfShow :cont="y2017[cIndex]" />
-      </transition>
+      <PfShow :cont="yy" @hdp="hdp" />
     </div>
   </div>
 </template>
@@ -17,17 +12,53 @@ import PfShow from "./childPF/PfShow";
 export default {
   data() {
     return {
-      years: [2017, 2018, 2019],
       cIndex: 0,
-      y2017: [
+      pre: 0,
+      yy: [
         {
-          te: 20177777777
+          // 项目名称
+          XMName: "DSW购物街",
+          // 背景颜色
+          bgc: "linear-gradient(#fffbd5, #b20a2c)",
+          // 项目图片的长度
+          widthI: "13vw",
+          // 项目图片部分的总长度
+          widthD: "26vw",
+          // 图片右侧文字部分长度
+          widthT: "13vw",
+          // 图片部分上下间隔距离
+          mTop: "2vw",
+          // 项目图片链接
+          src: {
+            s0: require("../../assets/img/profile/Mall_01.png"),
+            s1: require("../../assets/img/profile/Mall_02.png"),
+            s2: require("../../assets/img/profile/Mall_03.png")
+          },
+          // 右侧文字
+          te: {
+            t0: "我是第一个图片的文字",
+            t1: "我是第二个图片的文字",
+            t2: "我是第三个图片的文字"
+          }
         },
         {
-          te: 20188888888
+          XMName: "仿写京东东PC端商城",
+          bgc: "linear-gradient(#004e92, #000428)",
+          widthI: "25vw",
+          widthD: "40vw",
+          widthT: "15vw",
+          src: {
+            s0: require("../../assets/img/profile/FJD_01.png"),
+            s1: require("../../assets/img/profile/FJD_02.png"),
+            s2: require("../../assets/img/profile/FJD_03.png"),
+            s3: require("../../assets/img/profile/FJD_04.png")
+          }
         },
         {
-          te: 20199999999
+          XMName: "其他项目",
+          bgc: "linear-gradient(#485563, #29323c)",
+          widthI: "13vw",
+          widthD: "26vw"
         }
       ]
     };
@@ -36,7 +67,11 @@ export default {
     DSWNNN,
     PfShow
   },
-  methods: {}
+  methods: {
+    hdp(pre) {
+      this.pre = pre;
+    }
+  }
 };
 </script>
 
@@ -45,47 +80,12 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
 }
 .content {
   position: relative;
-  width: 70vw;
-  height: 82vh;
-  background: #f4f4f4;
-  margin: auto;
+  width: 85vw;
+  height: 88vh;
+  margin: 0 auto;
   top: 9vh;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-}
-.content_l {
-  position: absolute;
-  width: 26vw;
-  height: 98%;
-  left: 0.5vw;
-  top: 1%;
-  transition: 1s;
-}
-.content_r {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 43vw;
-  height: 100%;
-  border-left: 1px dashed rgba(0, 0, 0, 0.1);
-  background: #e3e8e7;
-}
-.button {
-  position: relative;
-  float: left;
-  width: 30px;
-  height: 30px;
-  background: yellow;
-  z-index: 999;
-  top: 50%;
-  transform: scaleY(-50%);
-}
-.button_r {
-  float: right;
 }
 </style>

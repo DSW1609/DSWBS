@@ -17,48 +17,51 @@ export default {
       yy: [
         {
           // 项目名称
-          XMName: "DSW购物街",
-          // 背景颜色
-          bgc: "linear-gradient(#fffbd5, #b20a2c)",
+          XMName: "DSW购物街(Vue+Vue Cli3+Vue-Router+Vuex)",
           // 项目图片的长度
           widthI: "13vw",
-          // 项目图片部分的总长度
-          widthD: "26vw",
-          // 图片右侧文字部分长度
-          widthT: "13vw",
           // 图片部分上下间隔距离
-          mTop: "2vw",
-          // 项目图片链接
-          src: {
-            s0: require("../../assets/img/profile/Mall_01.png"),
-            s1: require("../../assets/img/profile/Mall_02.png"),
-            s2: require("../../assets/img/profile/Mall_03.png")
-          },
-          // 右侧文字
-          te: {
-            t0: "我是第一个图片的文字",
-            t1: "我是第二个图片的文字",
-            t2: "我是第三个图片的文字"
-          }
+          // mTop: "2vw",
+          // 文字颜色
+          color: "#fff",
+          // 项目图片文字数据
+          base: [
+            {
+              src: require("../../assets/img/profile/Mall_01.png")
+            },
+            {
+              src: require("../../assets/img/profile/Mall_02.png")
+            },
+            {
+              src: require("../../assets/img/profile/Mall_03.png")
+            }
+          ]
         },
         {
-          XMName: "仿写京东东PC端商城",
-          bgc: "linear-gradient(#004e92, #000428)",
+          XMName: "仿写京东东PC端商城(HTML+CSS+JavaScript+JQuery)",
           widthI: "25vw",
-          widthD: "40vw",
-          widthT: "15vw",
-          src: {
-            s0: require("../../assets/img/profile/FJD_01.png"),
-            s1: require("../../assets/img/profile/FJD_02.png"),
-            s2: require("../../assets/img/profile/FJD_03.png"),
-            s3: require("../../assets/img/profile/FJD_04.png")
-          }
+          base: [
+            {
+              src: require("../../assets/img/profile/FJD_01.png"),
+              te: "我是第一个图片的文字"
+            },
+            {
+              src: require("../../assets/img/profile/FJD_02.png"),
+              te: "我是第二个图片的文字"
+            },
+            {
+              src: require("../../assets/img/profile/FJD_03.png"),
+              te: "我是第三个图片的文字"
+            },
+            {
+              src: require("../../assets/img/profile/FJD_04.png"),
+              te: "我是第四个图片的文字"
+            }
+          ]
         },
         {
           XMName: "其他项目",
-          bgc: "linear-gradient(#485563, #29323c)",
-          widthI: "13vw",
-          widthD: "26vw"
+          widthI: "13vw"
         }
       ]
     };
@@ -83,9 +86,9 @@ export default {
 }
 .content {
   position: relative;
-  width: 85vw;
-  height: 88vh;
+  width: 100vw;
+  height: 99vh;
+  top: 1vh;
   margin: 0 auto;
-  top: 9vh;
 }
 </style>

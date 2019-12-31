@@ -6,17 +6,16 @@
       trigger="click"
       @change="((pre, next) =&gt; {myFun(pre)})"
     >
+      <!-- 三个轮播图！ -->
       <el-carousel-item v-for="(item,index) in cont" :key="index">
+        <!-- 循环生成图片部分 -->
         <div
           class="PfImgC"
-          v-for="(s,indez) in item.src"
-          :style="{width:item.widthD,backgroundImage:item.bgc,marginTop:item.mTop}"
+          v-for="(b,indez) in item.base"
+          :style="{width:item.widthD,marginTop:item.mTop}"
           :key="indez"
         >
-          <!-- 左侧图片 -->
-          <img class="PfImg" :style="{width:item.widthI}" :src="s" alt />
-          <!-- 右侧文字说明 -->
-          <div class="PfImgTe" :style="{width:item.widthT,left:item.widthI}">{{item.te}}</div>
+          <img class="PfImg" :style="{width:item.widthI}" :src="b.src" alt />
         </div>
         <!-- 底部项目名字 -->
         <div class="XMName">
@@ -48,7 +47,7 @@ export default {
 
 <style>
 .el-carousel__container {
-  height: 88vh !important;
+  height: 98vh !important;
 }
 .PfImgC {
   position: relative;
@@ -72,10 +71,13 @@ export default {
   position: absolute;
   top: 0;
   height: 100%;
+  color: #fff;
+  padding: 0.5vw;
+  font-size: 20px;
 }
 .XMName {
   position: absolute;
-  width: 60vw;
+  width: 100%;
   height: 10vh;
   bottom: 18px;
   left: 0;
